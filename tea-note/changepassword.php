@@ -15,7 +15,7 @@ $userpwd=$_POST['userpwd'];
 $newpwd=$_POST['newpwd'];
 if($role=="teacher")
 {
-	$ChkLogin="select * from teacher where TeaNo='$username' and Pwd='$userpwd'";
+	$ChkLogin="select * from teacher where tea_id='$username' and Pwd='$userpwd'";
 	}
 	else
 	{
@@ -28,7 +28,7 @@ if($role=="teacher")
 			if($role=="teacher"){
 				$_SESSION["username"]=$username;
 				$_SESSION["role"]="teacher";
-				$Changepassword_SQL="update teacher set Pwd='$newpwd' where TeaNo='$username'";
+				$Changepassword_SQL="update teacher set Pwd='$newpwd' where tea_id='$username'";
 				$Changepassword_Result=db_query($Changepassword_SQL);
 				if($Changepassword_Result){
 				echo"<script>";

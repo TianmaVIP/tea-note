@@ -151,8 +151,8 @@ $j=$i+1;
     <div class="pagin" align="center">
     	<table width="400" border="0" align="center">
   <tr>
-      <td align="center"><a href="showAllTeachingPlan.php? p=0">首页</a></td>
-      <td align="center">
+      <td align="center"><a href="showAllTeachingPlan.php? p=0"><font color="#FF0000">首页</font></a></td>
+      <td align="center"><font color="#FF0000">
 	  <?php
 	  if($p>9){
 		  $last=(floor($p/10)*10)-10;
@@ -161,8 +161,8 @@ $j=$i+1;
 		  else
 		  echo"上一页";
       ?>
-      </td>
-      <td align="center">
+      </font></td>
+      <td align="center"><font color="#FF0000">
       <?php
 	  if($i>9 and $number>$check){
 		    echo"<a href='showAllTeachingPlan.php? p=$j'>下一页</a>";
@@ -170,8 +170,8 @@ $j=$i+1;
 	  else
 	     echo"下一页";
       ?>
-      </td>
-      <td align="center">
+      </font></td>
+      <td align="center"><font color="#FF0000">
       <?php
       if($i>9)
       {
@@ -182,7 +182,7 @@ $j=$i+1;
         echo"最后一页";
 		?>
        
-      </td>
+      </font></td>
   </tr>
 </table>
     </div>

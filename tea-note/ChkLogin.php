@@ -14,7 +14,7 @@ $username=$_POST['username'];
 $userpwd=$_POST['userpwd'];
 if($role=="teacher")
 {
-	$ChkLogin="select * from teacher where TeaNo='$username' and Pwd='$userpwd'";
+	$ChkLogin="select * from teacher where tea_id='$username' and Pwd='$userpwd'";
 	}
 	else
 	{

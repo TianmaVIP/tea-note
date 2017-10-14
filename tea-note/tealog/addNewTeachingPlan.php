@@ -68,7 +68,7 @@ $(document).ready(function(){
             </tr>
             <tr>
             <td>班级名</td>
-            <td><input type="text" name="tea_class"/></td>
+            <td><input type="text" name="tea_class"/>(注意：网络1532和网络技术1532是两个班)</td>
             </tr>
             <tr>
             <td>课程名</td>
