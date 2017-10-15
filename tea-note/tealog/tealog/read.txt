@@ -1,0 +1,68 @@
+教学日志管理
+教师每次课（一次课是2节）都有记录，这次课上的主要内容
+每个月，要上交这样一张表
+
+教师姓名  授课的班级  课程名称  年 月
+---------------------------------------
+时间  授课内容  课外作业
+13/10 gdasd
+14/14 asd
+15/15  asdf
+
+ 最后的打印
+
+数据库的设计
+  
+
+ 教师授课表（授课表编号,教师名，班级名，课程名，总学时，学期）
+ tb_teachingInfo(tea_id,tea_name,tea_class,tea_cou,tea_hour,tea_term)
+ 
+ 教学计划详细表（tp_id，授课表编号，授课内容摘要，授课时间）
+ tb_teachingPlanInfo(tp_id,tea_id,tp_content,tp_time)
+
+
+create database db_tealog;
+
+CREATE TABLE tb_teachingPlanInfo(
+`tp_id` int NOT NULL auto_increment,
+`tea_id` int NOT NULL ,
+`tp_content` VARCHAR( 500) NOT NULL ,
+`tp_time` VARCHAR( 50 ) NOT NULL ,
+
+PRIMARY KEY ( `tp_id` ) ) ENGINE = MYISAM ;
+
+
+CREATE TABLE tb_teachingInfo(
+`tea_id` int NOT NULL auto_increment,
+`tea_name` VARCHAR( 50 ) NOT NULL ,
+`tea_class` VARCHAR( 50) NOT NULL ,
+`tea_cou` VARCHAR( 50 ) NOT NULL ,
+`tea_hour` int NOT NULL ,
+`tea_term` VARCHAR( 50 ) NOT NULL ,
+PRIMARY KEY ( `tea_id` ) ) ENGINE = MYISAM ;
+
+
+
+
+
+
+
+
+
+
+
+
+ 教师表（教师编号，教师姓名，密码）
+ tb_teacherInfo(tea_id,tea_name,tea_pass)
+ 课程表（课程编号，课程名称，周学时，周数）
+ tb_courseInfo(cou_id,cou_name,cou_hour,cou_weeks)
+ 班级表（班级编号，班级名称）
+ tb_classInfo(cla_id,cla_name)
+ 教师授课表（授课表编号,教师编号，班级编号，课程编号，学期）
+ tb_teachingInfo(t_id,tea_id,cla_id,cou_id,term)
+ 
+ 教学计划详细表（id，授课表编号，授课内容摘要，授课时间）
+ tb_teachingPlanInfo(tp_id,t_id,tp_content,tp_time)
+
+
+

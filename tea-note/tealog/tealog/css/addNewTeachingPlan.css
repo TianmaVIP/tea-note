@@ -1,0 +1,16 @@
+@charset "utf-8";
+body{ width:900px; height:700px; margin:0 auto; background-color:#ecf2f8;}
+header{width:900px; height:100px;}
+header aside { width:300px;height:100px; float:left;}
+header aside img {width:300px; height:100px;}
+header article{ width:500px; height:100px; float:left; text-align:right;}
+#content{width:900px; height:500px; margin:0px 20px; padding:20px 10px;}
+#content section{ width:100px;height:500px; float:left;}
+#content ul{ display:block; border-radius:10px; border:1px solid #666;text-align:center;}
+#content ul li{ height:30px;list-style:none; padding-top:30px; border-bottom:1px solid #999; margin-left:-40px;}
+#content ul li a:link,a:active{color:#000;text-decoration:none; font-weight:bold;}
+#content ul li a:hover,a:visited{color:#F00;text-decoration:none; font-weight:bold;}
+#content aside{ width:700px;height:500px;float:right; margin:0px 30px; padding-left:10px;border:1px solid red;}
+.clear{ clear:both} 
+footer{ clear:both;width:900px; height:100px; text-align:center;}/* CSS Document */
+
