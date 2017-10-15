@@ -41,17 +41,10 @@ $(document).ready(function(){
     
     <div class="tools">
     
-    	<ul class="toolbar">
-        <li class="click"><span><img src="images/t01.png" /></span>添加</li>
-        <li class="click"><span><img src="images/t02.png" /></span>修改</li>
-        <li><span><img src="images/t03.png" /></span>删除</li>
-        <li><span><img src="images/t04.png" /></span>统计</li>
-        </ul>
+    	
         
         
-        <ul class="toolbar1">
-        <li><span><img src="images/t05.png" /></span>设置</li>
-        </ul>
+        
     
     </div>
    	<div style="width:100%; height:50px;">
@@ -79,10 +72,10 @@ $(document).ready(function(){
             <div class="tiptop"><span>提示信息</span><a></a></div>
             
           <div class="tipinfo">
-            <span><img src="images/ticon.png" /></span>
+            
             <div class="tipright">
             <p>是否确认对信息的修改 ？</p>
-            <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+            <cite>如果是请点击<font color="#FF0000">确定</font>按钮 ，否则请点<font color="#FF0000">取消</font>。</cite>
             </div>
             </div>
             

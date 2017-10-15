@@ -25,6 +25,64 @@ $(document).ready(function(){
 });
 
 });
+
+ 
+
+//当全选按钮，选中时，所有复选框被选中，当全选按钮不被选中时，所有的也不被选中
+function funSelAll(){
+var selects=document.getElementsByName("selOne");
+if(document.getElementsByName("selAll")[0].checked==true){
+for(var i=0;i<selects.length;i++){
+selects[i].checked=true;
+}
+}else{
+for(var i=0;i<selects.length;i++){
+selects[i].checked=false;
+}
+}
+}
+//当所有的复选框被选中时，全选按钮被选中，当其中任意一个或者多个没被选中时，全选按钮不被选中
+function funSelOne(){
+var one=document.getElementsByName("selOne");
+var all=document.getElementsByName("selAll")[0]
+var selCount=0;
+var unSelCount=0;
+for(var i=0;i<one.length;i++){
+ if(one[i].checked==true){
+  selCount++;
+ }
+ if(one[i].checked==false){
+  unSelCount++;
+ }
+ if(selCount==one.length){
+  all.checked=true;
+ }
+ if(unSelCount>0){
+  all.checked=false;
+ }
+}
+}
+
+ 
+
+function funDelBatch(){
+var strsValue="";
+var strs=document.getElementsByName("selOne");
+if(strs!=null&&strs.length>0){
+for(var i=0;i<strs.length;i++){
+//----
+if(strs[i].checked==true){
+strsValue=strsValue+strs[i].value+",";
+}
+//---
+
+ 
+
+}
+}
+document.form1.action="<%=request.getContextPath()%>/grade/allGrades.htm?method=toDetailGradeBatch&gradeIds="+strsValue;
+document.form1.submit();
+}
 </script>
 
 
@@ -70,9 +128,8 @@ $result = mysql_query($sql,$id);
     <div class="tools">
     
     	<ul class="toolbar">
-        <li class="click"><span><img src="images/t01.png" /></span>添加</li>
-        <li class="click"><span><img src="images/t02.png" /></span>修改</li>
-        <li><span><img src="images/t03.png" /></span>删除</li>
+        
+        <li><li class="click"><span><img src="images/t03.png" /></span>删除</li>
         
         </ul>
         
@@ -90,7 +147,7 @@ $result = mysql_query($sql,$id);
     <table class="tablelist" align='center' border='10' cellspacing='0' cellpadding='8'  bordercolor='#000'>
 
 <tr>
- <th><input name="" type="checkbox" value="" checked="checked"/></th>
+ <th><input type="checkbox" name="selAll" onClick="funSelAll(this)"></th>
 <th>序号</th><th>学期</th><th>教师</th><th>课程</th><th>班级</th><th>月份</th><th>操作</th>
 </tr>
 <?php
@@ -115,7 +172,7 @@ $result = mysql_query($sql,$id);
 			if($i%2 ==0)
 echo "<form name='f$rows' method='post' action='showTeachingPlan.php'>";
 echo "<tr>";
-echo "<td><input name='' type='checkbox' value='' /></td>";
+echo "<td><input type='checkbox' name='selOne' value='${vo.gradeId}' onClick='funSelOne(this)'></td>";
 echo "<td>$rows</td>";
 echo "<td><input type='hidden' name='tea_term' value='$tea_term' />".$row['tea_term']." </td>";
 echo "<td><input type='hidden' name='tea_name' value='$tea_name' />".$row['tea_name']." </td>";
@@ -192,15 +249,15 @@ $j=$i+1;
     	<div class="tiptop"><span>提示信息</span><a></a></div>
         
       <div class="tipinfo">
-        <span><img src="images/ticon.png" /></span>
-        <div class="tipright">
+        
+        <div class="tipright" >
         <p>是否确认对信息的修改 ？</p>
-        <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+        <cite>如果是请点击<font color="#FF0000">确定</font>按钮 ，否则请点<font color="#FF0000">取消</font>。</cite>
         </div>
         </div>
         
         <div class="tipbtn">
-        <a href='deleteTeachingPlan.php?tea_id=$tea_id&tea_term=$tea_term1&tea_name=$tea_name1' onclick='return del()'>删除</a>&nbsp;
+        <a href='deleteTeachingPlan.php?tea_id=$tea_id&tea_term=$tea_term1&tea_name=$tea_name1' onclick='return del()'><input name="" type="button"  class="cancel" value="确定"/></a></button>&nbsp;
         <input name="" type="button"  class="cancel" value="取消" />
         </div>
     

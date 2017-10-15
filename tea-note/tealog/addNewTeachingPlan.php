@@ -68,23 +68,23 @@ $(document).ready(function(){
             </tr>
             <tr>
             <td>班级名</td>
-            <td><input type="text" name="tea_class"/>(注意：网络1532和网络技术1532是两个班)</td>
+            <td><input type="text" name="tea_class"/>（注意：网络1532和网络技术1532是两个班）</td>
             </tr>
             <tr>
             <td>课程名</td>
-            <td><input type="text" name="tea_cou"/></td>
+            <td><input type="text" name="tea_cou"/>（如 Java程序设计）</td>
             </tr>
             <tr>
             <td>总学时</td>
-            <td><input type="text" name="tea_hour"/></td>
+            <td><input type="text" name="tea_hour"/>（如 40）</td>
             </tr>
             <tr>
             <td>周学时</td>
-            <td><input type="text" name="tea_hourweek"/></td>
+            <td><input type="text" name="tea_hourweek"/>（如 3）</td>
             </tr>
             <tr>
             <td>学期</td>
-            <td><input type="text" name="tea_term" value="2016-2017-2"/>(格式2014-2015-1)</td>
+            <td><input type="text" name="tea_term" value="2016-2017-2"/>（格式2014-2015-1）</td>
             </tr>
             <tr>
             <td>开学日期</td>
@@ -112,7 +112,7 @@ $(document).ready(function(){
             <tr>
             <td>&nbsp;</td>
             <td>
-            	<button><input type="submit" value="添加"/></button>
+            	<input type="submit" class="sure"  value="添加"/>
             </td>
             </tr>
         </table>
