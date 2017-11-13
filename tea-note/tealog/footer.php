@@ -3,12 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>footer</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+
 
 
 </head>
 
-<body style="background:url(images/topbg.gif) repeat-x;">
-   <div style="text-align:center">版权所有 北工院2017</div>
+<body style="background:url(images/topbg.gif) repeat-x; font-size:20px; font-family:'华文楷体';">
+   <div style="text-align:center; padding-top:15px;">版权所有 北工院2017</div>
 </body>
 </html>
+

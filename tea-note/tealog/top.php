@@ -2,7 +2,7 @@
 error_reporting(0); 
 session_start();
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-	echo $_SESSION['username'];
+	//echo $_SESSION['username'];
 }
 
 ?>
@@ -26,10 +26,10 @@ $(function(){
 
 </head>
 
-<body style="background:url(images/topbg.gif) repeat-x;">
+<body style="background:url(images/topbg.gif) repeat-x ; ">
 
     <div class="topleft">
-    <a href="main.html" target="_parent"><img src="images/logo.png" title="系统首页" /></a>
+    <a href="main.php" target="_parent"><img src="images/logo.png" title="系统首页" /></a>
     </div>
         
     
@@ -44,7 +44,7 @@ $(function(){
      
     <div class="user">
     <span>
-	root
+	用户：
 	<?php
 	echo $_SESSION['username'];
 	?>
@@ -54,5 +54,6 @@ $(function(){
     
     </div>
 </body>
+
 </html>
 

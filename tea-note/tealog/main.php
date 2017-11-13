@@ -1,25 +1,10 @@
-﻿
-<?php
-session_start();
-if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-	echo "<script>";
-    echo "登录成功：".$_SESSION['username'];
-	echo "</script>";
-}else{
-	
-    echo "<script>";
-	echo "alert(\"您已经安全退出，如果需要请重新登录！\");";
-	echo "location.href=\"../login.php\"";
-	echo "</script>";
-}
-?>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>网站后台管理系统</title>
+<title>教师日志生成系统</title>
 </head>
-<frameset rows="88,500,40" cols="*" frameborder="no" border="0" framespacing="0">
+
+<frameset rows="88px,1000px,60px" cols="*" frameborder="no" border="0" framespacing="0">
   <frame src="top.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
   <frameset cols="187,*" frameborder="no" border="0" framespacing="0">
     <frame src="left.php" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
@@ -29,6 +14,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 </frameset>
 <noframes>
 <body>
+您的浏览器无法处理框架!!!!！
 </body>
 </noframes>
 </html>

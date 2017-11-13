@@ -7,11 +7,10 @@ $tp_kewai=$_REQUEST['tp_kewai'];
 //得到最后插入的记录的编号
 //select max(tea_id) from table  
 //连接
-@$id = mysql_connect("localhost","root","root");
-//打开
-@$db=mysql_select_db("db_tealog",$id);
+include("../conn/db_conn.php");
+
 $sql_id="select max(tea_id) as maxid from tb_teachingInfo";
-$result = mysql_query($sql_id,$id); 
+$result = mysql_query($sql_id); 
 $tea_id='';
 if($row=mysql_fetch_array($result)){
    $tea_id=$row['maxid'];
@@ -19,7 +18,7 @@ if($row=mysql_fetch_array($result)){
 
 $sql_check = "select tp_id from tb_teachingPlanInfo where tea_id=$tea_id";
 
-$result = mysql_query($sql_check,$id);
+$result = mysql_query($sql_check);
 
 $num = mysql_num_rows($result);//获取记录条数
 //echo $sql_check." r=".$result."num=".$num."<br/>";
@@ -44,7 +43,7 @@ $sql=substr($sql,0,strlen($sql)-1);
 //echo "sql=".$sql;
 
 echo "<br/>";
- $result = mysql_query($sql,$id);
+ $result = mysql_query($sql);
  if($result){
   echo"<script>";
 	echo"alert(\"添加课程成功\");";
