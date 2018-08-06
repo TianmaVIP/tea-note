@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php
+session_start();
+if(! isset($_SESSION["username"])){
+	header("Location:..//login.php");
+	exit();
+	}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -111,8 +118,8 @@ $tea_term=$_POST['tea_term'];
  
  $year=date('Y',strtotime($term_start));
  //echo "-----------------2--------------<br/>";
- //echo $weeknum."  ".$year;
- //echo "<br/>";
+//echo $weeknum."  ".$year;
+//echo "<br/>";
  //**********************************
 
  $week = $_POST['week'];//课程都是周几上课
@@ -173,9 +180,63 @@ if($num==0){//没有录入了
  echo "<table width=700 border=1>";
  echo "<tr><td>周次</td><td>授课日期</td><td>授课内容摘要</td><td>课外作业</td></tr>";
   //echo "<br/>-----------------7--------------<br/>";
-  //echo "weeknum=".$weeknum."<br/>";
-  //echo "total_weeks=".$total_weeks."<br/>";
-  //echo "noweeknum=".$noweeknum."<br/>";
+ //echo "weeknum=".$weeknum."<br/>";
+ // echo "total_weeks=".$total_weeks."<br/>";
+ // echo "noweeknum=".$noweeknum."<br/>";
+  
+ if(empty($noweektemp)){
+	  for($w=$weeknum;$w<($weeknum+$total_weeks+$noweeknum-1);$w++){
+   $b=true;//开关
+   for($index=0;$index<count($noweeks);$index++){
+     //echo $noweek[$index]."<br/>";
+     //echo $w." ".$noweeks[$index]." ".($noweeks[$index]+$weeknum-1)."<br/>";
+     if($w==$noweeks[$index]+$weeknum-1){
+        //表示当前周是无课周
+        $b=false;
+        break;
+     }
+   }
+   if($b){
+     foreach ((array)$week as $v){
+       $lianpai=false;
+       foreach ((array)$four as $v2){
+         //echo $v;//这个就是周几四节连排
+		if($v==$v2){
+           $lianpai=true;
+         }
+       }
+      //echo $v;//这个就是周几有课
+      //echo $year."年 第".$w."周 星期".$v."<br/>";
+      
+      echo "<tr>";
+      echo "<td>".($w-$weeknum+1)."</td>";
+ 
+      $d = getd($year,$w,$v);
+      echo "<td><input type='text' name='tp_time[]' value='$d' readonly/></td>";
+      echo "<td><input type='text' name='tp_content[]' value=''/></td>";
+	  echo "<td><input type='text' name='tp_kewai[]' value=''/></td>";
+      //echo "<td><input type='text' /></td>";
+  
+      echo "</tr>";
+      if($lianpai){
+      echo "<tr>";
+      echo "<td>".($w-$weeknum+1)."</td>";
+      
+      $d = getd($year,$w,$v);
+      echo "<td><input type='text' name='tp_time[]' value='$d' readonly/></td>";
+      echo "<td><input type='text' name='tp_content[]' value=''/></td>";
+	  echo "<td><input type='text' name='tp_kewai[]' value=''/></td>";
+      //echo "<td><input type='text' /></td>";
+  
+      //echo "</tr>";
+      }
+     }
+   }
+
+
+ }
+ }else{
+ 
  for($w=$weeknum;$w<=($weeknum+$total_weeks+$noweeknum-1);$w++){
    $b=true;//开关
    for($index=0;$index<count($noweeks);$index++){
@@ -204,8 +265,8 @@ if($num==0){//没有录入了
  
       $d = getd($year,$w,$v);
       echo "<td><input type='text' name='tp_time[]' value='$d' readonly/></td>";
-      echo "<td><input type='text' name='tp_content[]' value='$d'/></td>";
-	  echo "<td><input type='text' name='tp_kewai[]' value='$d'/></td>";
+      echo "<td><input type='text' name='tp_content[]' value=''/></td>";
+	  echo "<td><input type='text' name='tp_kewai[]' value=''/></td>";
       //echo "<td><input type='text' /></td>";
   
       echo "</tr>";
@@ -215,8 +276,8 @@ if($num==0){//没有录入了
       
       $d = getd($year,$w,$v);
       echo "<td><input type='text' name='tp_time[]' value='$d' readonly/></td>";
-      echo "<td><input type='text' name='tp_content[]' value='$d'/></td>";
-	  echo "<td><input type='text' name='tp_kewai[]' value='$d'/></td>";
+      echo "<td><input type='text' name='tp_content[]' value=''/></td>";
+	  echo "<td><input type='text' name='tp_kewai[]' value=''/></td>";
       //echo "<td><input type='text' /></td>";
   
       //echo "</tr>";
@@ -226,6 +287,8 @@ if($num==0){//没有录入了
 
 
  } 
+ }
+ 
  
   echo "<tr>";
   echo "<td colspan=4><input type='submit' value='保存'/></td>";

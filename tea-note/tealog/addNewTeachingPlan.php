@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php
+session_start();
+if(! isset($_SESSION["username"])){
+	header("Location:..//login.php");
+	exit();
+	}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,35 +71,35 @@ $(document).ready(function(){
         <table style="border:1px solid #06C">
             <tr>
             <td>教师姓名</td>
-            <td><input type="text" name="tea_name"/></td>
+            <td align="left"><input type="text" name="tea_name"/></td>
             </tr>
             <tr>
             <td>班级名</td>
-            <td><input type="text" name="tea_class"/>（注意：网络1532和网络技术1532是两个班）</td>
+            <td align="left"><input type="text" name="tea_class"/>（注意：网络1532和网络技术1532是两个班）</td>
             </tr>
             <tr>
             <td>课程名</td>
-            <td><input type="text" name="tea_cou"/>（如 Java程序设计）</td>
+            <td align="left"><input type="text" name="tea_cou"/>（如 Java程序设计）</td>
             </tr>
             <tr>
             <td>总学时</td>
-            <td><input type="text" name="tea_hour"/>（如 40）</td>
+            <td align="left"><input type="text" name="tea_hour"/>（如 40）</td>
             </tr>
             <tr>
             <td>周学时</td>
-            <td><input type="text" name="tea_hourweek"/>（如 3）</td>
+            <td align="left"><input type="text" name="tea_hourweek"/>（如 3）</td>
             </tr>
             <tr>
             <td>学期</td>
-            <td><input type="text" name="tea_term" value="2016-2017-2"/>（格式2014-2015-1）</td>
+            <td align="left"><input type="text" name="tea_term" value="2017-2018-2"/>（格式2014-2015-1）</td>
             </tr>
             <tr>
             <td>开学日期</td>
-            <td><input type="text" name="term_start" value="2017-2-27"/>（开学第一周的周一日期）</td>
+            <td align="left"><input type="text" name="term_start" value="2017-9-04"/>（开学第一周的周一日期）</td>
             </tr>
             <tr>
             <td>无课周</td>
-            <td><input type="text" name="noweeks"/>（如 4,7）</td>
+            <td align="left"><input type="text" name="noweeks"/>（如 4,7）</td>
             </tr>
             <tr>
             <td>上课时间</td>

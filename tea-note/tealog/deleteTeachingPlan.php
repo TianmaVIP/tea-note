@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
- error_reporting(0);
+error_reporting(0);
 //连接
 @$id = mysql_connect("localhost","root","root");
 //打开
@@ -22,7 +22,7 @@ $sql="delete from tb_teachinginfo where tea_id=".$tea_id;
 $result = mysql_query($sql,$id); 
 
 echo "<script>";
-echo "window.location.href='showAllTeachingPlan.php?tea_name=$tea_name&tea_term=$tea_term'";
+echo "window.location.href='modify.php?tea_name=$tea_name&tea_term=$tea_term'";
 echo "</script>";
  
 

@@ -90,7 +90,14 @@ strsValue=strsValue+strs[i].value+",";
 document.form1.action="<%=request.getContextPath()%>/grade/allGrades.htm?method=toDetailGradeBatch&gradeIds="+strsValue;
 document.form1.submit();
 }
-</script>
+
+function delcfm() { 
+if (!confirm("确认要删除？")) { 
+window.event.returnValue = false; 
+} 
+} 
+</script> 
+
 
 
 </head>
@@ -110,7 +117,7 @@ $tea_cou1=$_GET['tea_cou'];
 //if(isset($_GET['searchbt'])){
 //$tea_name1=$_GET['tea_name'];
 //$tea_term1=$_GET['tea_term'];
-$sql="select tea_id,tea_name,tea_class,tea_cou,tea_hour,tea_term from tb_teachinginfo where tea_name like '%$tea_name1%' and tea_cou like '%$tea_cou1%' and tea_class like '%$tea_class1%' and tea_term like '%$tea_term1%' order by tea_term desc";
+$sql="select * from tb_teachinginfo where tea_name like '%$tea_name%' and tea_cou like '%$tea_cou%' and tea_class like '%$tea_class%' and tea_term like '%$tea_term%' order by tea_term desc";
 //echo $sql;
 //}else{
  
@@ -132,7 +139,6 @@ $result = mysql_query($sql,$id);
     
     <div class="rightinfo">
     
-  
     
     <div style="margin:0 auto;width:600px; font-family:'华文楷体'"> 
     
@@ -140,7 +146,7 @@ $result = mysql_query($sql,$id);
     <table class="tablelist" align='center' border='10' cellspacing='0' cellpadding='8'  bordercolor='#000'>
 
 <tr>
-
+ 
 <th>序号</th><th>学期</th><th>教师</th><th>课程</th><th>班级</th><th>月份</th><th>操作</th>
 </tr>
 <?php
@@ -162,8 +168,8 @@ $result = mysql_query($sql,$id);
         $tea_hour=$row['tea_hour'];
         $tea_term=$row['tea_term'];
 		if($i>=$p && $i < $check){
-		
-echo "<form name='f$rows' method='post' action='showTeachingPlan.php'>";
+			
+echo "<form name='f$rows' method='post' action='modifyPlanDetail.php'>";
 echo "<tr>";
 
 echo "<td>$rows</td>";
@@ -187,7 +193,7 @@ echo "<option value=".$row['tp_time'].">".$row['tp_time']."</option>";
 
 echo "</select>";
 echo "</td>";
-echo "<td><input type='submit'   value='查看'/></td>";
+echo "<td><input type='submit'   value='修改'/><a href='deleteTeachingPlan.php?tea_id=$tea_id&tea_term=$tea_term1&tea_name=$tea_name1' onClick='delcfm()''>删除</a></td>";
 echo "</tr>";
 echo "</form>";
 $j=$i+1;
@@ -195,6 +201,7 @@ $j=$i+1;
 		}
 }
 ?>
+
 </table>
     
    
@@ -207,7 +214,7 @@ $j=$i+1;
 	  <?php
 	  if($p>9){
 		  $last=(floor($p/10)*10)-10;
-		  echo "<a href='showAllTeachingPlan.php? p=$last'>上一页</a>";
+		  echo "<a href='modify.php? p=$last'>上一页</a>";
 		  }
 		  else
 		  echo"上一页";
@@ -216,7 +223,7 @@ $j=$i+1;
       <td align="center"><font color="#FF0000">
       <?php
 	  if($i>9 and $number>$check){
-		    echo"<a href='showAllTeachingPlan.php? p=$j'>下一页</a>";
+		    echo"<a href='modify.php? p=$j'>下一页</a>";
 		  }
 	  else
 	     echo"下一页";
@@ -227,7 +234,7 @@ $j=$i+1;
       if($i>9)
       {
       $final=floor($number/10)*10;
-      echo"<a href='showAllTeachingPlan.php? p=$final'>尾页</a>";
+      echo"<a href='modify.php? p=$final'>尾页</a>";
       }
       else
         echo"最后一页";
@@ -239,7 +246,7 @@ $j=$i+1;
     </div>
     
     
-    <div class="tip">
+     <div class="tip">
     	<div class="tiptop"><span>提示信息</span><a></a></div>
         
       <div class="tipinfo">
@@ -255,7 +262,7 @@ $j=$i+1;
         <input name="" type="button"  class="cancel" value="取消" />
         </div>
     
-    </div>
+    </div> 
     
     
     
