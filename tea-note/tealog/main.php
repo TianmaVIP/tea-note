@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网站后台管理系统</title>
 </head>
-<frameset rows="88px,600px,60px" cols="*" frameborder="no" border="0" framespacing="0">
+<frameset rows="90px,560px,60px" cols="*" frameborder="no" border="0" framespacing="0">
   <frame src="top.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
   <frameset cols="187,*" frameborder="no" border="0" framespacing="0">
     <frame src="left.php" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
